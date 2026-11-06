@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghanashyam Mandal · Analytics Portfolio</title>
+<meta name="description" content="Chemical engineer who turns data into decisions. Portfolio of Ghanashyam Mandal (IIT Madras) with six in-browser analytics and AI prototypes.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f2228'/%3E%3Cpath d='M8 22 L13 15 L18 18 L24 9' stroke='%232dd4bf' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+  // Apply saved / system theme before first paint
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('pf-theme'); } catch (e) {}
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<link rel="stylesheet" href="css/styles.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script defer src="js/core.js"></script>
+<script defer src="js/rag.js"></script>
+<script defer src="js/agent.js"></script>
+<script defer src="js/graph.js"></script>
+<script defer src="js/forecast.js"></script>
+<script defer src="js/spc.js"></script>
+<script defer src="js/vision.js"></script>
+<script defer src="js/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">GM</span>
+      <div class="brand-text">
+        <strong>Ghanashyam Mandal</strong>
+        <small>Data · Analytics · AI</small>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Sections">
+      <ul>
+        <li><a href="#home" data-nav="home"><span class="nav-num">01</span>Home</a></li>
+        <li><a href="#lab" data-nav="lab"><span class="nav-num">02</span>Prototype lab</a></li>
+        <li><a href="#cases" data-nav="cases"><span class="nav-num">03</span>Case studies</a></li>
+        <li><a href="#work" data-nav="work"><span class="nav-num">04</span>How I work</a></li>
+        <li><a href="#contact" data-nav="contact"><span class="nav-num">05</span>Contact</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+      <span id="themeLabel">Theme</span>
+    </button>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <div class="stage">
+
+      <!-- ===================== 1. HOME ===================== -->
+      <section class="section" id="sec-home" data-section="home" aria-labelledby="h-home">
+        <div class="hero">
+          <p class="eyebrow">B.Tech Chemical Engineering · IIT Madras · Class of 2027</p>
+          <h1 id="h-home">Chemical engineer who turns data into decisions.</h1>
+          <p class="lede">I build models that connect plant and lab data to business calls: what to make, what to buy, where to launch and when to stop. Below are six working prototypes for manufacturing, procurement and quality teams. They all run in your browser.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#lab">Open the prototype lab</a>
+            <a class="btn" href="assets/Ghanashyam_Mandal_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+            <a class="btn" href="https://www.linkedin.com/in/ghanashyammandal07" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+
+          <ul class="stat-row" aria-label="Selected results">
+            <li><strong>2M+</strong><span>vehicle records analysed for an EV market-entry case</span></li>
+            <li><strong>217%</strong><span>YoY growth found in 4-wheeler EV registrations</span></li>
+            <li><strong>82%</strong><span>of movement variance captured by cluster analysis</span></li>
+            <li><strong>6</strong><span>formulations stress-tested from 5°C to 55°C at L'Oréal R&amp;D</span></li>
+          </ul>
+
+          <h2 class="sub-h">Jump to a prototype</h2>
+          <ul class="proto-grid">
+            <li><a href="#lab/rag"><span class="pg-tag">GenAI</span><strong>RAG assistant for plant SOPs</strong><span>TF-IDF retrieval with cited answers</span></a></li>
+            <li><a href="#lab/agent"><span class="pg-tag">Agentic AI</span><strong>Procurement agent</strong><span>Plan, act, observe, with human approval</span></a></li>
+            <li><a href="#lab/graph"><span class="pg-tag">Knowledge graph</span><strong>Supply-chain disruption map</strong><span>Impact, shortest paths, centrality</span></a></li>
+            <li><a href="#lab/forecast"><span class="pg-tag">ML</span><strong>Demand forecasting</strong><span>Holt-Winters with live MAPE</span></a></li>
+            <li><a href="#lab/spc"><span class="pg-tag">Quality</span><strong>SPC quality monitor</strong><span>X-bar/R charts, Western Electric rules</span></a></li>
+            <li><a href="#lab/vision"><span class="pg-tag">Vision</span><strong>Hand-gesture recognition</strong><span>MediaPipe in the browser</span></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== 2. LAB ===================== -->
+      <section class="section" id="sec-lab" data-section="lab" aria-labelledby="h-lab" hidden>
+        <header class="section-head">
+          <p class="eyebrow">Prototype lab</p>
+          <h2 id="h-lab">Six working demos</h2>
+          <p class="muted">Every demo runs entirely in your browser on sample data for demonstration. No backend, no API keys. These are personal prototypes and have not been used by any client or company.</p>
+        </header>
+
+        <div class="lab-tabs" role="tablist" aria-label="Prototypes">
+          <button role="tab" id="tab-rag" aria-controls="demo-rag" data-demo="rag">RAG for SOPs</button>
+          <button role="tab" id="tab-agent" aria-controls="demo-agent" data-demo="agent">Procurement agent</button>
+          <button role="tab" id="tab-graph" aria-controls="demo-graph" data-demo="graph">Knowledge graph</button>
+          <button role="tab" id="tab-forecast" aria-controls="demo-forecast" data-demo="forecast">Forecasting</button>
+          <button role="tab" id="tab-spc" aria-controls="demo-spc" data-demo="spc">Quality SPC</button>
+          <button role="tab" id="tab-vision" aria-controls="demo-vision" data-demo="vision">Vision</button>
+        </div>
+
+        <!-- a. RAG -->
+        <article class="demo" id="demo-rag" role="tabpanel" aria-labelledby="tab-rag" hidden>
+          <header class="demo-head">
+            <h3>RAG assistant for plant SOPs</h3>
+            <p class="problem"><span class="label">Business problem</span>Operators lose time hunting through long SOPs and policies for one answer, and a wrong answer on safety or quality is costly.</p>
+            <span class="badge">Sample data for demonstration</span>
+          </header>
+          <div class="demo-body">
+            <form class="rag-form" id="ragForm">
+              <label for="ragQuery" class="field-label">Ask a question about the sample documents</label>
+              <div class="inline-field">
+                <input id="ragQuery" type="search" autocomplete="off" value="What PPE is required before entering the reactor area?">
+                <button class="btn btn-primary" type="submit">Search</button>
+              </div>
+              <div class="chips" id="ragChips" aria-label="Example questions"></div>
+            </form>
+            <div class="rag-out">
+              <div class="card answer-card">
+                <h4>Extractive answer</h4>
+                <div id="ragAnswer" aria-live="polite"></div>
+              </div>
+              <div>
+                <h4 class="mini-h">Top 3 retrieved passages</h4>
+                <ol class="passages" id="ragPassages"></ol>
+              </div>
+            </div>
+            <details class="card rag-own">
+              <summary>Query your own text (stays in your browser)</summary>
+              <label for="ragOwn" class="field-label">Paste text. Paragraphs become passages.</label>
+              <textarea id="ragOwn" rows="5" placeholder="Paste a procedure, policy or notes here..."></textarea>
+              <div class="btn-row">
+                <button class="btn" type="button" id="ragAddOwn">Add to index</button>
+                <label class="check"><input type="checkbox" id="ragOnlyOwn"> Search only my text</label>
+                <button class="btn btn-ghost" type="button" id="ragClearOwn">Clear my text</button>
+              </div>
+              <p class="muted small" id="ragOwnStatus"></p>
+            </details>
+            <details class="card">
+              <summary>Browse the 10 sample documents</summary>
+              <div id="ragDocs" class="doc-list"></div>
+            </details>
+          </div>
+          <div class="notes">
+            <div>
+              <h4>How it works</h4>
+              <p>Each document is split into short passages. Every passage becomes a TF-IDF vector: words that are frequent in that passage but rare across the collection get more weight. Your question is turned into the same kind of vector, and passages are ranked by cosine similarity. The answer is extractive. It quotes the best-matching sentences from the top passages and cites them, so it cannot make up facts.</p>
+            </div>
+            <div>
+              <h4>How this scales at a client</h4>
+              <ul>
+                <li>Swap TF-IDF for dense embeddings plus a vector store, keep keyword search for exact terms (hybrid retrieval), and add an LLM that must answer only from cited passages.</li>
+                <li>Connect to the document management system with role-based access, version tracking and an evaluation set of real operator questions to measure answer accuracy before rollout.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- b. AGENT -->
+        <article class="demo" id="demo-agent" role="tabpanel" aria-labelledby="tab-agent" hidden>
+          <header class="demo-head">
+            <h3>Agentic procurement workflow</h3>
+            <p class="problem"><span class="label">Business problem</span>Buyers check stock, compare suppliers and raise purchase orders by hand, so stock-outs slip through and supplier choices are inconsistent.</p>
+            <span class="badge">Sample data for demonstration</span>
+          </header>
+          <div class="demo-body">
+            <div class="agent-grid">
+              <div>
+                <h4 class="mini-h">Inventory (edit "On hand" and re-run)</h4>
+                <div class="table-wrap">
+                  <table class="data" id="agentInv">
+                    <caption class="sr-only">Sample inventory table</caption>
+                    <thead><tr><th scope="col">SKU</th><th scope="col">Item</th><th scope="col">On hand</th><th scope="col">Reorder pt</th><th scope="col">Use/day</th></tr></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <fieldset class="weights">
+                  <legend>Supplier scoring weights</legend>
+                  <label>Cost <input type="range" min="0" max="100" value="50" id="wCost"><output id="wCostOut">50</output></label>
+                  <label>Lead time <input type="range" min="0" max="100" value="30" id="wLead"><output id="wLeadOut">30</output></label>
+                  <label>Risk <input type="range" min="0" max="100" value="20" id="wRisk"><output id="wRiskOut">20</output></label>
+                </fieldset>
+                <div class="btn-row">
+                  <button class="btn btn-primary" type="button" id="agentRun">Re-run agent</button>
+                  <label class="check"><input type="checkbox" id="agentFast"> Instant trace</label>
+                </div>
+              </div>
+              <div>
+                <h4 class="mini-h">Agent trace <span class="muted small" id="agentStatus"></span></h4>
+                <ol class="trace" id="agentTrace" aria-live="polite"></ol>
+                <div class="approval card" id="agentApproval" hidden></div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <div>
+              <h4>How it works</h4>
+              <p>The agent is rule-based but built as a real agent loop. It writes a plan, then repeatedly picks a tool (read inventory, check reorder point, score suppliers, draft PO, check policy), reads the result, and decides the next step. Suppliers are scored on min-max normalised cost, lead time and risk using your weights. If an item will run out before the best supplier can deliver, the agent re-plans and picks the fastest acceptable supplier. Nothing is ordered until a human approves.</p>
+            </div>
+            <div>
+              <h4>How this scales at a client</h4>
+              <ul>
+                <li>Replace the rules with an LLM planner that calls the same tools through ERP APIs (stock, vendor master, contract prices), keeping hard-coded policy checks and approval limits around it.</li>
+                <li>Log every thought, tool call and approval for audit, start in "draft only" mode, and measure stock-outs avoided and buyer hours saved before allowing auto-release of low-value orders.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- c. GRAPH -->
+        <article class="demo" id="demo-graph" role="tabpanel" aria-labelledby="tab-graph" hidden>
+          <header class="demo-head">
+            <h3>Supply-chain knowledge graph</h3>
+            <p class="problem"><span class="label">Business problem</span>When a supplier fails, teams struggle to see quickly which components, products and plants are exposed, and which suppliers are single points of failure.</p>
+            <span class="badge">Sample data for demonstration</span>
+          </header>
+          <div class="demo-body">
+            <div class="graph-controls">
+              <div>
+                <span class="field-label" id="disruptLbl">Simulate a disruption (click a supplier square or a button)</span>
+                <div class="chips" id="graphSuppliers" role="group" aria-labelledby="disruptLbl"></div>
+              </div>
+              <div class="path-pick">
+                <span class="field-label">Shortest path</span>
+                <div class="inline-field">
+                  <label class="sr-only" for="pathFrom">From</label><select id="pathFrom"></select>
+                  <span aria-hidden="true">→</span>
+                  <label class="sr-only" for="pathTo">To</label><select id="pathTo"></select>
+                </div>
+              </div>
+            </div>
+            <div class="graph-wrap card" id="graphWrap">
+              <svg id="graphSvg" role="img" aria-label="Force-directed graph of suppliers, components, products and plants"></svg>
+              <div class="legend" id="graphLegend"></div>
+            </div>
+            <div class="graph-info">
+              <div class="card">
+                <h4>Disruption impact</h4>
+                <div id="graphImpact" aria-live="polite"></div>
+                <h4 class="mt">Shortest path</h4>
+                <p id="graphPath"></p>
+              </div>
+              <div class="card">
+                <h4>Most critical suppliers</h4>
+                <div class="table-wrap">
+                  <table class="data" id="graphRank">
+                    <thead><tr><th scope="col">#</th><th scope="col">Supplier</th><th scope="col">Products lost</th><th scope="col">At risk</th><th scope="col" title="Betweenness centrality">Centrality</th></tr></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <div>
+              <h4>How it works</h4>
+              <p>Suppliers, components, products and plants are nodes; "supplies", "used in" and "made at" are edges. A disruption propagates downstream: a component is lost if all its suppliers are down, or at risk if only some are. A product is lost if any of its components is lost. Shortest paths use breadth-first search. Criticality ranks suppliers by how many products they would take down, with betweenness centrality (how often a node sits on shortest paths) as a tie-breaker.</p>
+            </div>
+            <div>
+              <h4>How this scales at a client</h4>
+              <ul>
+                <li>Load supplier master, BOMs and plant routings from ERP into a graph database (for example Neo4j) and enrich it with tier-2 suppliers, locations and risk feeds.</li>
+                <li>Run the same impact query on live events (port closures, quality holds) to trigger alerts and dual-sourcing reviews for the highest-centrality suppliers.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- d. FORECAST -->
+        <article class="demo" id="demo-forecast" role="tabpanel" aria-labelledby="tab-forecast" hidden>
+          <header class="demo-head">
+            <h3>Demand forecasting</h3>
+            <p class="problem"><span class="label">Business problem</span>Planners need a defensible monthly demand forecast with an honest range, so they can set production and safety stock without over- or under-building.</p>
+            <span class="badge" id="fcBadge">Sample data for demonstration</span>
+          </header>
+          <div class="demo-body">
+            <div class="fc-controls">
+              <label class="field">Method
+                <select id="fcMethod">
+                  <option value="hw">Holt-Winters (trend + seasonality)</option>
+                  <option value="holt">Holt (trend only)</option>
+                  <option value="ses">Simple exponential smoothing</option>
+                </select>
+              </label>
+              <label class="field">Forecast horizon: <output id="fcHOut">12</output> months
+                <input type="range" id="fcH" min="1" max="24" value="12">
+              </label>
+              <div class="field">
+                <span>Data</span>
+                <div class="btn-row">
+                  <label class="btn btn-file">Upload CSV<input type="file" id="fcFile" accept=".csv,text/csv" class="sr-only"></label>
+                  <button class="btn btn-ghost" type="button" id="fcReset">Use sample</button>
+                  <button class="btn btn-ghost" type="button" id="fcDownload">Sample CSV</button>
+                </div>
+              </div>
+            </div>
+            <p class="muted small" id="fcMsg"></p>
+            <div class="kpis" id="fcKpis"></div>
+            <div class="chart-box card"><canvas id="fcChart" aria-label="Demand history and forecast chart" role="img"></canvas></div>
+            <div class="table-wrap">
+              <table class="data" id="fcCompare">
+                <caption>Hold-out comparison (computed live)</caption>
+                <thead><tr><th scope="col">Method</th><th scope="col">Hold-out MAPE</th><th scope="col">Fitted parameters</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="notes">
+            <div>
+              <h4>How it works</h4>
+              <p>Holt-Winters keeps three running estimates: the level, the trend and a seasonal adjustment for each month, and updates each one a little every month (alpha, beta, gamma). The smoothing weights are chosen by grid search to minimise one-step-ahead error. To be honest about accuracy, the last 12 months (a quarter of the data for short uploads) are hidden, the model is fitted on the rest, and MAPE (mean absolute percentage error) is measured on that hidden period. The shaded band is an approximate 95% range that widens with the horizon. CSV upload: one value column, optionally with a date column.</p>
+            </div>
+            <div>
+              <h4>How this scales at a client</h4>
+              <ul>
+                <li>Run the same pipeline for thousands of SKU-location series in BigQuery or Python, with automatic method selection by back-test error and gradient-boosted models where drivers (price, promotions) matter.</li>
+                <li>Publish forecasts and error tracking to Power BI or Tableau so planners can override with a reason, and measure forecast value-add against the naive baseline every cycle.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- e. SPC -->
+        <article class="demo" id="demo-spc" role="tabpanel" aria-labelledby="tab-spc" hidden>
+          <header class="demo-head">
+            <h3>Manufacturing quality monitor (SPC)</h3>
+            <p class="problem"><span class="label">Business problem</span>Quality teams often find a drifting process only after a batch fails. They need an early signal while the product can still be saved.</p>
+            <span class="badge">Sample data for demonstration</span>
+          </header>
+          <div class="demo-body">
+            <div class="spc-top">
+              <div class="btn-row">
+                <button class="btn" type="button" id="spcPause" aria-pressed="false">Pause stream</button>
+                <button class="btn" type="button" id="spcShift">Inject shift</button>
+                <button class="btn" type="button" id="spcDrift">Inject drift</button>
+                <button class="btn" type="button" id="spcSpike">Inject spike</button>
+                <button class="btn btn-ghost" type="button" id="spcRestore">Restore process</button>
+              </div>
+              <div class="status-pill" id="spcStatus" aria-live="polite">In control</div>
+            </div>
+            <div class="kpis" id="spcKpis"></div>
+            <div class="spc-grid">
+              <div class="chart-box card"><canvas id="spcX" role="img" aria-label="X-bar control chart"></canvas></div>
+              <div class="chart-box card short"><canvas id="spcR" role="img" aria-label="Range control chart"></canvas></div>
+            </div>
+            <div class="spc-grid two">
+              <div class="card">
+                <h4>Rule violations</h4>
+                <ul class="vlog" id="spcLog"></ul>
+              </div>
+              <div class="chart-box card"><canvas id="spcPareto" role="img" aria-label="Pareto chart of defect causes"></canvas></div>
+            </div>
+          </div>
+          <div class="notes">
+            <div>
+              <h4>How it works</h4>
+              <p>A simulated viscosity sensor produces subgroups of 5 readings. Control limits come from the first 25 in-control subgroups (X-bar chart: grand mean ± A2·R̄; range chart: D3·R̄ to D4·R̄). Each new point is checked against four Western Electric rules: one point beyond 3σ, 2 of 3 beyond 2σ, 4 of 5 beyond 1σ, or 8 in a row on one side. The Pareto chart ranks defect causes so the few that drive most defects get fixed first. This is the same idea as the early-warning framework for product instability I proposed during my L'Oréal R&amp;D internship: flag a trend in lab measurements before it becomes a failed product.</p>
+            </div>
+            <div>
+              <h4>How this scales at a client</h4>
+              <ul>
+                <li>Stream real sensor and LIMS data (OPC-UA, MES) into a time-series store, compute limits per product and line, and push rule violations to operators and quality engineers in real time.</li>
+                <li>Link signals to batch records and defect codes so the Pareto updates itself, and add multivariate or ML anomaly detection where many correlated parameters move together.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- f. VISION -->
+        <article class="demo" id="demo-vision" role="tabpanel" aria-labelledby="tab-vision" hidden>
+          <header class="demo-head">
+            <h3>Vision: hand-gesture recognition</h3>
+            <p class="problem"><span class="label">Business problem</span>On the shop floor, gloved or busy hands make touchscreens awkward. Touch-free gestures could confirm steps or call help.</p>
+            <span class="badge">Runs on device</span>
+          </header>
+          <div class="demo-body">
+            <p class="privacy" role="note"><strong>Privacy:</strong> the camera starts only when you press the button. Video frames and uploaded images are processed on your device and never leave it. Only the open-source model files are downloaded from a public CDN.</p>
+            <div class="btn-row">
+              <button class="btn btn-primary" type="button" id="visCam">Start camera</button>
+              <label class="btn btn-file">Use an image instead<input type="file" id="visFile" accept="image/*" class="sr-only"></label>
+              <label class="check"><input type="checkbox" id="visSound"> Play a note per finger count</label>
+            </div>
+            <div class="vision-grid">
+              <div class="vision-stage card">
+                <canvas id="visCanvas" width="640" height="480" role="img" aria-label="Hand landmarks drawing"></canvas>
+                <video id="visVideo" playsinline muted hidden></video>
+              </div>
+              <div class="card vision-read">
+                <h4>Recognised gesture</h4>
+                <p class="gesture" id="visGesture" aria-live="polite">-</p>
+                <dl class="kv" id="visStats"></dl>
+                <p class="muted small" id="visMsg"></p>
+                <div class="chips" id="visSamples" aria-label="Sample landmark sets"></div>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <div>
+              <h4>How it works</h4>
+              <p>MediaPipe Hand Landmarker finds 21 points on each hand (wrist, knuckles, finger tips). A finger counts as extended when its tip is further from the wrist than its middle joint; the thumb is compared against the base of the little finger. The pattern of extended fingers maps to a gesture. Before you start the camera, the same classifier runs on built-in sample landmark sets so you can see the output. It builds on Gestural Music (Shaastra, Team Envisage), where finger tracking with OpenCV and MediaPipe was mapped to MIDI notes.</p>
+            </div>
+            <div>
+              <h4>How this scales at a client</h4>
+              <ul>
+                <li>Run on edge devices at workstations to confirm SOP steps or flag missing PPE, keeping video on the device and only sending events.</li>
+                <li>Train custom gesture or object models on site images, then validate under real lighting, gloves and camera angles before any operational use.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ===================== 3. CASES ===================== -->
+      <section class="section" id="sec-cases" data-section="cases" aria-labelledby="h-cases" hidden>
+        <header class="section-head">
+          <p class="eyebrow">Case studies</p>
+          <h2 id="h-cases">Problems I have worked on</h2>
+        </header>
+        <div class="case-grid">
+          <article class="case card">
+            <p class="case-tag">Market entry · Strategy</p>
+            <h3>EV charging market entry</h3>
+            <dl>
+              <dt>Problem</dt><dd>Where should a new public EV-charging business start in India?</dd>
+              <dt>Approach</dt><dd>Analysed 2M+ vehicle registration records, sized the market top-down (TAM, SAM, SOM) and ranked states on demand and readiness.</dd>
+              <dt>Result</dt><dd>Found 217% YoY growth in 4-wheeler EV registrations, sized 43K+ public charging points and recommended Karnataka as the pilot state.</dd>
+              <dt>Methods &amp; tools</dt><dd class="tools"><span>Large-scale record analysis</span><span>TAM / SAM / SOM sizing</span><span>State ranking</span></dd>
+            </dl>
+          </article>
+          <article class="case card">
+            <p class="case-tag">Analytics · Retail</p>
+            <h3>Mobility analytics for retail</h3>
+            <dl>
+              <dt>Problem</dt><dd>Which zones have the movement patterns that make them good retail locations?</dd>
+              <dt>Approach</dt><dd>Clustered zones by mobility features and compared high-mobility clusters with known retail hotspots.</dd>
+              <dt>Result</dt><dd>The clusters captured 82% of movement variance, and 91% of high-mobility zones overlapped retail hotspots.</dd>
+              <dt>Methods &amp; tools</dt><dd class="tools"><span>Cluster analysis</span><span>Variance analysis</span><span>Hotspot overlap</span></dd>
+            </dl>
+          </article>
+          <article class="case card">
+            <p class="case-tag">R&amp;D · Quality · May-Jul 2026</p>
+            <h3>L'Oréal: lab data to consumer quality</h3>
+            <dl>
+              <dt>Problem</dt><dd>Perceived product quality was judged with a manual panel test.</dd>
+              <dt>Approach</dt><dd>Built a scoring model (PLS regression) linking lab measurements to consumer-perceived quality, and stress-tested 6 formulations from 5°C to 55°C.</dd>
+              <dt>Result</dt><dd>A scoring model to replace the manual panel test, and a proposed early-warning framework for product instability.</dd>
+              <dt>Methods &amp; tools</dt><dd class="tools"><span>PLS regression</span><span>Temperature stress testing</span><span>Early-warning design</span></dd>
+            </dl>
+          </article>
+          <article class="case card">
+            <p class="case-tag">Process research · IIT Madras · Jul 2026-now</p>
+            <h3>CO2 absorption with MDEA</h3>
+            <dl>
+              <dt>Problem</dt><dd>How can CO2 capture with MDEA solvent be made faster?</dd>
+              <dt>Approach</dt><dd>Identified the rate-limiting step, then set up an evaluation of a Pickering-emulsion approach against cost, stability and feasibility.</dd>
+              <dt>Result</dt><dd>Interfacial area found to be the rate-limiting step. The Pickering-emulsion evaluation is in progress toward a go/no-go call.</dd>
+              <dt>Methods &amp; tools</dt><dd class="tools"><span>Rate-limiting step analysis</span><span>Cost / stability / feasibility screen</span><span>Go/no-go</span></dd>
+            </dl>
+          </article>
+        </div>
+        <div class="also card">
+          <h3>Also</h3>
+          <ul>
+            <li><strong>AI-driven multi-objective screening pipeline</strong> (course project): turned case-by-case review into a ranked shortlist.</li>
+            <li><strong>Gestural Music</strong> (Shaastra, Team Envisage): real-time finger tracking with OpenCV + MediaPipe mapped to MIDI notes.</li>
+            <li><strong>E-Cell IIT Madras, Marketing &amp; PR</strong>, Associate to Manager: led 5+ teams and ran events for 2,000+ people.</li>
+            <li><strong>Tools:</strong> Python, SQL, BigQuery, Power BI, Tableau, R, MATLAB. Google Data Analytics certification.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== 4. HOW I WORK ===================== -->
+      <section class="section" id="sec-work" data-section="work" aria-labelledby="h-work" hidden>
+        <header class="section-head">
+          <p class="eyebrow">How I work</p>
+          <h2 id="h-work">Plan, Do, Check, Act</h2>
+          <p class="muted">The improvement cycle I learned in process engineering is how I run analytics work too.</p>
+        </header>
+        <ol class="pdca">
+          <li class="card">
+            <span class="pdca-letter" aria-hidden="true">P</span>
+            <h3>Plan</h3>
+            <p>Frame the decision before touching data.</p>
+            <p class="example"><span class="label">Example</span>In the EV charging case, I sized TAM, SAM and SOM (43K+ public charging points) and ranked states before recommending Karnataka as the pilot.</p>
+          </li>
+          <li class="card">
+            <span class="pdca-letter" aria-hidden="true">D</span>
+            <h3>Do</h3>
+            <p>Build the smallest model that answers the question.</p>
+            <p class="example"><span class="label">Example</span>At L'Oréal, I built a PLS regression scoring model linking lab measurements to consumer-perceived quality, to replace a manual panel test.</p>
+          </li>
+          <li class="card">
+            <span class="pdca-letter" aria-hidden="true">C</span>
+            <h3>Check</h3>
+            <p>Test against reality and find what really limits the result.</p>
+            <p class="example"><span class="label">Example</span>In my CO2 absorption research with MDEA, I first found the rate-limiting step (interfacial area) before evaluating any fix.</p>
+          </li>
+          <li class="card">
+            <span class="pdca-letter" aria-hidden="true">A</span>
+            <h3>Act</h3>
+            <p>Turn findings into a standing process or a clear call.</p>
+            <p class="example"><span class="label">Example</span>After stress-testing 6 formulations from 5°C to 55°C, I proposed an early-warning framework for product instability. For the CO2 work, the Pickering-emulsion evaluation ends in a go/no-go call.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ===================== 5. CONTACT ===================== -->
+      <section class="section" id="sec-contact" data-section="contact" aria-labelledby="h-contact" hidden>
+        <header class="section-head">
+          <p class="eyebrow">Contact</p>
+          <h2 id="h-contact">Let's talk</h2>
+          <p class="muted">I am applying for Analyst roles in technology consulting: data, analytics, AI/ML and enterprise platforms for manufacturing, procurement and quality.</p>
+        </header>
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <h3>Email</h3>
+            <p class="email"><a href="mailto:ch23b015@smail.iitm.ac.in" id="emailLink">ch23b015@smail.iitm.ac.in</a></p>
+            <button class="btn btn-primary" type="button" id="copyEmail">Copy email</button>
+            <span class="muted small" id="copyMsg" role="status"></span>
+          </div>
+          <div class="card contact-card">
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/ghanashyammandal07" target="_blank" rel="noopener">linkedin.com/in/ghanashyammandal07</a></p>
+            <a class="btn" href="https://www.linkedin.com/in/ghanashyammandal07" target="_blank" rel="noopener">Open profile</a>
+          </div>
+          <div class="card contact-card">
+            <h3>Resume</h3>
+            <p>B.Tech Chemical Engineering, IIT Madras (CH23B015), graduating 2027.</p>
+            <a class="btn" href="assets/Ghanashyam_Mandal_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="pager">
+      <button class="btn" type="button" id="prevBtn"><span aria-hidden="true">←</span> <span id="prevLbl">Back</span></button>
+      <span class="pager-pos" id="pagerPos" aria-live="polite"></span>
+      <button class="btn btn-primary" type="button" id="nextBtn"><span id="nextLbl">Next</span> <span aria-hidden="true">→</span></button>
+    </footer>
+    <p class="disclaimer">Personal portfolio. Not affiliated with or endorsed by Deloitte. Sample data is for demonstration only.</p>
+  </main>
+</div>
+</body>
+</html>
